@@ -8,6 +8,6 @@ To Run:
 python $Install_path/ConvertGeneSymbol2L1000IDs_obj_v0.0.py -i CAL27-AhR_DN_genelist.txt
 
 Notes:
-Tested on MacOS
+Tested on MacOS, BU SCC; 
 Not working on Windows 10 system
 Getting the error: Failed to establish a new connection
