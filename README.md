@@ -1,6 +1,12 @@
 # c3_utils
 tools to facilitate data mining on Lincs C3 cloud data
 
+1.get the API into your Python path
+https://www.dropbox.com/sh/niuoc9tj7kqu2pl/AADfIuS_WJ_5vmEanbesWMaSa?dl=0
+
+2. get the required Python package required.
+See the https://github.com/cmap/l1ktools for the required Python modules.
+
 To install: 
 python setup.py install
 
