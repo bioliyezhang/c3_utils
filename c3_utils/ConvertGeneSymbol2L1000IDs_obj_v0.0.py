@@ -4,7 +4,7 @@ The main purpose of this script is to convert Gene Symbol to CMap L1000 probe
 IDs.
 
 =============================
-Usage: python ConvertGeneSymbol2L1000ID_obj_v0.1.py
+Usage: python ConvertGeneSymbol2L1000ID_obj_v0.0.py
 -h help
 
 -i files to processed                           *[No default value]
