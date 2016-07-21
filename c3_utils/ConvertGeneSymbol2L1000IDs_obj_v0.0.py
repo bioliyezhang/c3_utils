@@ -4,11 +4,13 @@ The main purpose of this script is to convert Gene Symbol to CMap L1000 probe
 IDs.
 
 =============================
-Usage: python ConvertGeneSymbol2L1000ID_obj_v0.0.py
+Usage: python ConvertGeneSymbol2L1000ID_obj_v0.1.py
 -h help
 
 -i files to processed                           *[No default value]
     (gene Symbol file)
+
+-c Column of gene symbol                        [default value: 0]
 
 -p parameter file               *[No default value]
 
@@ -20,7 +22,7 @@ Usage: python ConvertGeneSymbol2L1000ID_obj_v0.0.py
 
 -d sep_char within among columns                [default value '\t']
 
--j skip header lines                            [default value 1]
+-j skip header lines                            [default value 0]
     if skip header lines = 0 indicates that there is no header line
     if skip header lines = n indicates that first n lines are header lines
     
@@ -89,7 +91,7 @@ def specific_function(infiles):
         infile_reader=infile_obj.reader_gen()  ##create the file reader to process infile
         gene_list = []
         for row in infile_reader:
-            gene = row[0]
+            gene = row[SYMBOL_COLUMN]
             gene_list.append(gene)
 
         ## perform the query
@@ -146,6 +148,7 @@ if __name__ == "__main__":
     suffix="txt"
     infile=None
     infile_skip=0
+    SYMBOL_COLUMN = 0
     sep_char='\t'
     sep_gene=','
     header_file=None
@@ -158,13 +161,14 @@ if __name__ == "__main__":
     LINCS_API_KEY = "cac40ffd57f8873d2d50976375e2d509"
     
     ###get arguments(parameters)
-    optlist, cmd_list = getopt.getopt(sys.argv[1:], 'hi:s:S:r:d:D:j:I:t:p:L:o:O:z',["test="])
+    optlist, cmd_list = getopt.getopt(sys.argv[1:], 'hi:s:S:r:c:d:D:j:I:t:p:L:o:O:z',["test="])
     for opt in optlist:
         if opt[0] == '-h':
             print __doc__; sys.exit(0)
         elif opt[0] == '-i': infile = opt[1]
         elif opt[0] == '-I': INPUT_PATH = opt[1]
         elif opt[0] == '-O': OUTPUT_PATH = opt[1]
+        elif opt[0] == '-c': SYMBOL_COLUMN = int(opt[1])
         elif opt[0] == '-S': OUTPUT_SUFFIX = opt[1]
         elif opt[0] == '-s': suffix = opt[1]
         elif opt[0] == '-d': sep_char =opt[1]
